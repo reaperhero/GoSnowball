@@ -17,7 +17,7 @@ func runHttpserver() {
 		e.DefaultHTTPErrorHandler(err, c)
 	}
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-		AllowOrigins:     []string{},
+		AllowOrigins:     []string{"*"},
 		AllowMethods:     []string{echo.GET, echo.OPTIONS, echo.POST},
 		AllowCredentials: true,
 	}))
