@@ -4,15 +4,18 @@ import (
 	"github.com/labstack/echo"
 )
 
-
 type handler struct {
 }
 
-
-
 func NewHttpHandler(e *echo.Echo) {
 	h := handler{}
-	e.GET("/api/index/quote", h.index)
-	e.GET("/api/index/hotStock", h.hotStock)
-	e.GET("/api/index/news", h.news)
+	apigroup := e.Group("/api")
+	{
+		apigroup.GET("/index/quote", h.index)
+		apigroup.GET("/index/hotStock", h.hotStock)
+		apigroup.GET("/index/news", h.news)
+		apigroup.GET("/choose/industries", h.industries)
+		apigroup.GET("/choose/areas", h.chooseAreas)
+		apigroup.GET("/choose/tools", h.chooseTools)
+	}
 }
